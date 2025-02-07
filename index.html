@@ -6,30 +6,53 @@
     <title>Calculadora de Sueldos</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #2c3e50;
         }
         table {
-            width: 100%;
+            width: 80%;
             border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        table, th, td {
-            border: 1px solid #000;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
         }
         th, td {
-            padding: 10px;
+            padding: 12px;
             text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #112A4A;
+            color: white;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
         .button {
-            padding: 10px 20px;
-            background-color: #ff33c7;
+            padding: 12px 20px;
+            background-color: #4e4c6b;
             color: white;
             border: none;
             cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 16px;
         }
         .button:hover {
-            background-color: #ff33c7;
+            background-color: #4e4c6b;
         }
     </style>
 </head>
@@ -76,15 +99,12 @@
         function calcularSueldo() {
             const sueldo = parseFloat(document.getElementById('sueldoBase').value) || 0;
 
-
             if (sueldo <= 0) {
                 alert("Por favor ingrese un sueldo válido.");
                 return;
             }
             let isss = sueldo >= 1000 ? 30 : sueldo * 0.03;
-
             const afp = sueldo * 0.0725;
-
             const rentaI = sueldo - isss - afp;
 
             let isr = 0;
@@ -97,14 +117,9 @@
             }
 
             const retenciones = isr + isss + afp;
-
             const sueldoNeto = rentaI - isr;
-
-
             const isssPatronal = sueldo * 0.075;
-
             const afpPatronal = sueldo * 0.0875;
-
 
             document.getElementById('resultado-afp').textContent = `$${afp.toFixed(2)}`;
             document.getElementById('resultado-isss').textContent = `$${isss.toFixed(2)}`;
@@ -116,7 +131,5 @@
             document.getElementById('resultado-afpPatronal').textContent = `$${afpPatronal.toFixed(2)}`;
         }
     </script>
-
-
 </body>
 </html>
